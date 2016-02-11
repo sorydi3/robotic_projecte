@@ -9,6 +9,7 @@ import socket
 from client import *
 
 
+
 # Open Communication with the Arduino
 ##ser=serial.Serial("/dev/ttyACM0",9600)
 
