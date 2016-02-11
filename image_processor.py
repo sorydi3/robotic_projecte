@@ -32,7 +32,10 @@ if vc.isOpened(): # try to get the first frame
 else:
     rval = False
 
-def findCircles(A,circles):
+print("cleering socket...")
+send_to_robot(0.0) #clear socket
+sleep(0.2)
+print("socket cleened")
 
 
 while rval == True:
@@ -219,6 +222,11 @@ while rval == True:
             '''make robot place at A[move[0]][move[1]]'''
             print("After:",A)
             print("---------------------------")
+
+            print("cleering socket...")
+            send_to_robot(0) #clear socket
+            sleep(0.2)
+            print("socket cleened")
 
             if A[0][0]==A[0][1]==A[0][2]==2:
                 print("Robot Victory")

@@ -9,7 +9,7 @@ lock = threading.Lock()
 data=False
 
 ServerSideSocket = socket.socket()
-host = '127.0.0.1'
+host = '84.88.129.178'
 port = 2004
 ThreadCount = 0
 try:
@@ -18,7 +18,7 @@ except socket.error as e:
     print(str(e))
 
 print('Socket is listening..')
-ServerSideSocket.listen(5)
+ServerSideSocket.listen(2)
 
 def multi_threaded_client(connection):
     print("over there!!!")
@@ -30,7 +30,10 @@ def multi_threaded_client(connection):
             break
         posicio = struct.unpack("i",d)
         print("READ POSITION IS: "+ str(posicio))
-        if posicio[0]==1 and not data:
+        if posicio[0]==1  and not data:
+            print("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
+            sleep(0.3)
+            print("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
             lock.acquire()
             data=True
             lock.release()
@@ -49,7 +52,6 @@ def multi_threaded_local_client(connection):
             print(data)
             lock.release()
             break
-        print("waiting robot...")
     connection.close()
         
 
