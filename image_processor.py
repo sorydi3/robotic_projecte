@@ -37,7 +37,6 @@ send_to_robot(0.0) #clear socket
 sleep(0.2)
 print("socket cleened")
 
-
 while rval == True:
     cv2.imshow("Let's Play!", frame)
     rval, frame = vc.read()
@@ -223,10 +222,7 @@ while rval == True:
             print("After:",A)
             print("---------------------------")
 
-            print("cleering socket...")
-            send_to_robot(0) #clear socket
-            sleep(0.2)
-            print("socket cleened")
+            
 
             if A[0][0]==A[0][1]==A[0][2]==2:
                 print("Robot Victory")

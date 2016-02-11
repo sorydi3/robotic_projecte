@@ -29,14 +29,13 @@ def multi_threaded_client(connection):
             print("no data was sent closing socket!!!")
             break
         posicio = struct.unpack("i",d)
-        print("READ POSITION IS: "+ str(posicio))
-        if posicio[0]==1  and not data:
+        if posicio[0]!=0 and not data:
             print("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
-            sleep(0.3)
             print("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
-            lock.acquire()
             data=True
-            lock.release()
+            while(not data):
+                print("MAIN THREAD WAITING")
+                pass
     connection.close()
 
 
@@ -46,11 +45,9 @@ def multi_threaded_local_client(connection):
     print(data)
     while True:
         if(data):
-            lock.acquire()
             data=False
             print("after")
             print(data)
-            lock.release()
             break
     connection.close()
         
